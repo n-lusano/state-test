@@ -5,5 +5,5 @@ import React from "react";
 //1. export out Title component as default export
 // this means we don't use brackets (destructuring) while importing the class
 export default function Title(props) {
-  return <h1>{props.content}</h1>;
+  return <h2>{props.content}</h2>;
 }

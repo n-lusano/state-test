@@ -5,9 +5,11 @@ import LikeCounter from "./components/LikeCounter";
 
 function App() {
   return (
-    <main>
-      <Title content="Some Simple Title" />
-      <LikeCounter />
+    <main className="container text-center p-2">
+      <Title content="Counting likes" />
+      <div className="p-2 mx-auto">
+        <LikeCounter />
+      </div>
     </main>
   );
 }
