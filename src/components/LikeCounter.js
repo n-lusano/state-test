@@ -20,6 +20,8 @@ export default function LikeCounter() {
     set_numLikes(0);
   };
 
+  // console.log("A render!");
+
   return (
     <div>
       <p>

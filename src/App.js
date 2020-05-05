@@ -5,20 +5,25 @@ import LikeCounter from "./components/LikeCounter";
 import LikeButton from "./components/LikeButton";
 import ArticleList from "./components/ArticleList";
 // import AwesomeAnimals from "./components/AwesomeAnimals";
-// import ArticleCard from "./components/ArticleCard";
+// import ArticleButton from "./components/ArticleButton";
 
 function App() {
   return (
     <main className="text-center p-2">
-      <Title content="Counting likes" />
+      {/* <Title content="Counting likes" />
       <div className="p-2">
         <LikeCounter />
       </div>
       <div className="p-2">
         <LikeButton />
       </div>
-      <hr />
-      <ArticleList />
+      <hr /> */}
+      {/* <div className="p-2">
+        <ArticleButton />
+      </div> */}
+      <div className="p-2">
+        <ArticleList />
+      </div>
     </main>
   );
 }

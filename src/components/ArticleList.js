@@ -1,34 +1,50 @@
 // src/components/ArticleList.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
+import Timeout from "await-timeout";
+import axios from "axios";
 
 export default function ArticleList() {
-  const [articles, set_articles] = useState([
-    {
-      id: 1,
-      title: "What is React all about?",
-      body:
-        "React is all about one-way data flow, the Virtual DOM, and transpiling JSX.",
-    },
-    {
-      id: 2,
-      title: "A lovely kid",
-      body: "In fact, a kid is also the name of a baby goat!",
-    },
-    {
-      id: 3,
-      title: "On placeholder image URLs",
-      body:
-        "So yeah, you won't be able to look these images up. They're placeholders",
-    },
-  ]);
+  const [articles, set_articles] = useState();
 
-  return (
-    <div>
-      <p>Here's a lovely list of articles, for your reading pleasure:</p>
-      {articles.map((article) => (
-        <ArticleCard title={article.title} content={article.body} />
-      ))}
-    </div>
-  );
+  useEffect(() => {
+    async function doSomeDataFetching() {
+      console.log("I'm gonna fetch some data");
+      await Timeout.set(2000); //time in milliseconds
+      const res = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts?_limit=5"
+      );
+      console.log("Got back:", res);
+      set_articles(res);
+    }
+    doSomeDataFetching();
+  }, []);
+
+  if (articles) {
+    return (
+      <div>
+        <p>
+          <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
+        </p>
+        {articles.data.map((article) => {
+          return (
+            <ArticleCard
+              title={article.title}
+              content={article.body}
+              key={articles.data.id}
+            />
+          );
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>
+          <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
+        </p>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 }
