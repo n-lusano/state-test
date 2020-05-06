@@ -23,15 +23,13 @@ export default function ArticleList() {
   if (articles) {
     return (
       <div>
-        <p>
-          <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
-        </p>
-        {articles.data.map((article) => {
+        <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
+        {articles.data.map((article, index) => {
           return (
             <ArticleCard
               title={article.title}
               content={article.body}
-              key={articles.data.id}
+              key={index}
             />
           );
         })}
@@ -40,9 +38,7 @@ export default function ArticleList() {
   } else {
     return (
       <div>
-        <p>
-          <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
-        </p>
+        <h2>Here's a lovely list of articles, for your reading pleasure:</h2>
         <p>Loading...</p>
       </div>
     );
